@@ -21,7 +21,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    Afterbuy.configure do |config|
+      config.partner_id = 'valid_partner_id'
+      config.partner_password = 'valid_partner_password'
+      config.user_id = 'valid_user_id'
+      config.user_password = 'valid_user_password'
+    end
+
+    afterbuy = Afterbuy::API.new
+    afterbuy.call('GetAfterbuyTime')
 
 ## Contributing
 
