@@ -1,5 +1,10 @@
 module Afterbuy
   class API
+
+    METHOD_RESPONSE_MAPPING = {
+      'GetAfterbuyTime' => 'Time'
+    }
+
     def initialize(partner_id: nil, partner_password: nil, user_id: nil, user_password: nil)
       raise ConfigMissingPartnerIDError, 'You must provide an Afterbuy partner_id'             unless Afterbuy.config.partner_id || partner_id
       raise ConfigMissingPartnerPasswordError, 'You must provide an Afterbuy partner_password' unless Afterbuy.config.partner_password || partner_password
@@ -17,7 +22,7 @@ module Afterbuy
       response = connection.post do |req|
         req.body = request_params(method_name, params)
       end
-      Representer::ResponseRepresenter.new(Response.new).from_xml(response.body)
+      "Afterbuy::Representer::#{METHOD_RESPONSE_MAPPING[method_name]}ResponseRepresenter".constantize.new("Afterbuy::#{METHOD_RESPONSE_MAPPING[method_name]}Response".constantize.new).from_xml(response.body)
     end
 
     def connection

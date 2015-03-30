@@ -1,4 +1,5 @@
 require 'active_support/configurable'
+require 'active_support/inflector'
 require 'faraday'
 require 'ostruct'
 require 'roar/decorator'
@@ -16,6 +17,7 @@ require 'afterbuy/representer/error'
 require 'afterbuy/representer/warning'
 require 'afterbuy/representer/result'
 require 'afterbuy/representer/response'
+require 'afterbuy/representer/time_response'
 
 require 'afterbuy/api'
 

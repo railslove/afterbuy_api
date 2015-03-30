@@ -59,7 +59,16 @@ describe Afterbuy::API do
     describe '#call' do
       context 'invalid credentials' do
         specify do
-          expect(subject.call('DoSomething').Result.ErrorList).to_not be_empty
+          expect(subject.call('DoSomething').CallStatus).to eql 'Error'
+          expect(subject.call('DoSomething').ErrorList).to_not be_empty
+        end
+      end
+
+      context 'GetAfterbuyTime' do
+        specify do
+          pending
+          expect(subject.call('GetAfterbuyTime').AfterbuyTimeStamp).to_not be_nil
+          expect(subject.call('GetAfterbuyTime').AfterbuyUniversalTimeStamp).to_not be_nil
         end
       end
     end
