@@ -19,11 +19,6 @@ require 'afterbuy/representer/result_representer'
 require 'afterbuy/representer/response_representer'
 require 'afterbuy/representer/time_response_representer'
 
-require 'afterbuy/representer/catalog_representer'
-require 'afterbuy/representer/product_picture_representer'
-require 'afterbuy/representer/attribute_representer'
-require 'afterbuy/representer/product_representer'
-
 require 'afterbuy/api'
 
 module Afterbuy

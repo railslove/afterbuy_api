@@ -38,16 +38,16 @@ module Afterbuy
       def request_params(method_name, params={})
         Representer::RequestRepresenter.new(
           Request.new({
-            AfterbuyGlobal:
+            afterbuy_global:
               Global.new(
                 params.merge({
-                  PartnerID: @partner_id,
-                  PartnerPassword: @partner_password,
-                  UserID: @user_id,
-                  UserPassword: @user_password,
-                  CallName: method_name,
-                  DetailLevel: 0,
-                  ErrorLanguage: 'EN'
+                  partner_id: @partner_id,
+                  partner_password: @partner_password,
+                  user_id: @user_id,
+                  user_password: @user_password,
+                  call_name: method_name,
+                  detail_level: 0,
+                  error_language: 'EN'
                 })
               )
           })
