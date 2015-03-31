@@ -10,14 +10,19 @@ require 'afterbuy/errors'
 
 require 'afterbuy/middleware/error_detector'
 
-require 'afterbuy/representer/global'
-require 'afterbuy/representer/request'
+require 'afterbuy/representer/global_representer'
+require 'afterbuy/representer/request_representer'
 
-require 'afterbuy/representer/error'
-require 'afterbuy/representer/warning'
-require 'afterbuy/representer/result'
-require 'afterbuy/representer/response'
-require 'afterbuy/representer/time_response'
+require 'afterbuy/representer/error_representer'
+require 'afterbuy/representer/warning_representer'
+require 'afterbuy/representer/result_representer'
+require 'afterbuy/representer/response_representer'
+require 'afterbuy/representer/time_response_representer'
+
+require 'afterbuy/representer/catalog_representer'
+require 'afterbuy/representer/product_picture_representer'
+require 'afterbuy/representer/attribute_representer'
+require 'afterbuy/representer/product_representer'
 
 require 'afterbuy/api'
 
