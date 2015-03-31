@@ -46,7 +46,8 @@ module Afterbuy
                   UserID: @user_id,
                   UserPassword: @user_password,
                   CallName: method_name,
-                  DetailLevel: 0
+                  DetailLevel: 0,
+                  ErrorLanguage: 'EN'
                 })
               )
           })
