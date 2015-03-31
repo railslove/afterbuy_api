@@ -14,6 +14,7 @@ module Afterbuy
       property :UserPassword
       property :CallName
       property :DetailLevel
+      property :ErrorLanguage
     end
   end
 end

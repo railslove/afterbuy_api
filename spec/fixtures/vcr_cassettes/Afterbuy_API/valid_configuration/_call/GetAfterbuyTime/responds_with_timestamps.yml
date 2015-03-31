@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.afterbuy.de/afterbuy/ABInterface.aspx
+    body:
+      encoding: UTF-8
+      string: |-
+        <Request>
+          <AfterbuyGlobal>
+            <PartnerID>valid_partner_id</PartnerID>
+            <PartnerPassword>valid_partner_password</PartnerPassword>
+            <UserID>valid_user_id</UserID>
+            <UserPassword>valid_user_password</UserPassword>
+            <CallName>GetAfterbuyTime</CallName>
+            <DetailLevel>0</DetailLevel>
+            <ErrorLanguage>EN</ErrorLanguage>
+          </AfterbuyGlobal>
+        </Request>
+    headers:
+      Content-Type:
+      - application/xml
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - ASP.NET_SessionId=1fkobodbyshmrtv2jpwew33x; path=/; HttpOnly
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 31 Mar 2015 09:09:41 GMT
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<Afterbuy>\r\n   <CallStatus>Success</CallStatus>\r\n
+        \  <CallName>GetAfterbuyTime</CallName>\r\n   <VersionID>8</VersionID>\r\n
+        \  <Result>\r\n      <AfterbuyTimeStamp>31.03.2015 11:09:41</AfterbuyTimeStamp>\r\n
+        \     <AfterbuyUniversalTimeStamp>31.03.2015 09:09:41</AfterbuyUniversalTimeStamp>\r\n
+        \  </Result>\r\n</Afterbuy>"
+    http_version:
+  recorded_at: Tue, 31 Mar 2015 09:09:41 GMT
+recorded_with: VCR 2.9.3
