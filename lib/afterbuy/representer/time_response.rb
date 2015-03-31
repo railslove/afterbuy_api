@@ -4,9 +4,7 @@ module Afterbuy
 
   module Representer
     class TimeResponseRepresenter < ResponseRepresenter
-      nested :Result do
-        include ResultRepresenter
-
+      property :Result, extend: ResultRepresenter, class: Result do
         property :AfterbuyTimeStamp
         property :AfterbuyUniversalTimeStamp
       end

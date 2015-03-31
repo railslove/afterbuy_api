@@ -11,9 +11,7 @@ module Afterbuy
       property :CallStatus
       property :CallName
       property :VersionID
-      nested :Result do
-        include ResultRepresenter
-      end
+      property :Result, extend: ResultRepresenter, class: Result
     end
   end
 end
