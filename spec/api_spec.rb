@@ -60,19 +60,19 @@ describe Afterbuy::API do
       context 'invalid method call' do
         specify 'responds with a call not found error' do
           response = subject.call('DoSomething')
-          expect(response.CallStatus).to eql 'Error'
-          expect(response.Result.ErrorList).to_not be_empty
-          expect(response.Result.ErrorList.first.ErrorDescription).to eql 'Unsupported CallName.'
+          expect(response.call_status).to eql 'Error'
+          expect(response.result.errors).to_not be_empty
+          expect(response.result.errors.first.description).to eql 'Unsupported CallName.'
         end
       end
 
       context 'GetAfterbuyTime' do
         specify 'responds with timestamps' do
           response = subject.call('GetAfterbuyTime')
-          expect(response.CallStatus).to eql 'Success'
-          expect(response.Result.ErrorList).to be_nil
-          expect(response.Result.AfterbuyTimeStamp).to_not be_nil
-          expect(response.Result.AfterbuyUniversalTimeStamp).to_not be_nil
+          expect(response.call_status).to eql 'Success'
+          expect(response.result.errors).to be_nil
+          expect(response.result.afterbuy_timestamp).to_not be_nil
+          expect(response.result.afterbuy_universal_timestamp).to_not be_nil
         end
       end
     end

@@ -8,7 +8,7 @@ module Afterbuy
 
       self.representation_wrap = :Request
 
-      property :AfterbuyGlobal, extend: GlobalRepresenter, class: Global
+      property :afterbuy_global, as: :AfterbuyGlobal, extend: GlobalRepresenter, class: Global
     end
   end
 end

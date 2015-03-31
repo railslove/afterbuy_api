@@ -8,9 +8,9 @@ module Afterbuy
 
       self.representation_wrap = :Error
 
-      property :ErrorCode
-      property :ErrorDescription
-      property :ErrorLongDescription
+      property :code, as: :ErrorCode
+      property :description, as: :ErrorDescription
+      property :long_description, as: :ErrorLongDescription
     end
   end
 end

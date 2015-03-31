@@ -8,10 +8,10 @@ module Afterbuy
 
       self.representation_wrap = :Afterbuy
 
-      property :CallStatus
-      property :CallName
-      property :VersionID
-      property :Result, extend: ResultRepresenter, class: Result
+      property :call_status, as: :CallStatus
+      property :call_name, as: :CallName
+      property :version_id, as: :VersionID
+      property :result, as: :Result, extend: ResultRepresenter, class: Result
     end
   end
 end

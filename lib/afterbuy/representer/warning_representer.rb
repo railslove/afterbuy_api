@@ -8,9 +8,9 @@ module Afterbuy
 
       self.representation_wrap = :Warning
 
-      property :WarningCode
-      property :WarningDescription
-      property :WarningLongDescription
+      property :code, as: :WarningCode
+      property :description, as: :WarningDescription
+      property :long_description, as: :WarningLongDescription
     end
   end
 end

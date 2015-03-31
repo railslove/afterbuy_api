@@ -4,9 +4,9 @@ module Afterbuy
 
   module Representer
     class TimeResponseRepresenter < ResponseRepresenter
-      property :Result, extend: ResultRepresenter, class: Result do
-        property :AfterbuyTimeStamp
-        property :AfterbuyUniversalTimeStamp
+      property :result, as: :Result, extend: ResultRepresenter, class: Result do
+        property :afterbuy_timestamp, as: :AfterbuyTimeStamp
+        property :afterbuy_universal_timestamp, as: :AfterbuyUniversalTimeStamp
       end
     end
   end
