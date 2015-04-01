@@ -30,6 +30,13 @@ Or install it yourself as:
 
     afterbuy = Afterbuy::API.new
     afterbuy.call('GetAfterbuyTime')
+    => #<Afterbuy::TimeResponse
+          call_status="Success",
+          call_name="GetAfterbuyTime",
+          version_id="8",
+          result=#<Afterbuy::Result
+            afterbuy_timestamp="01.04.2015 16:52:35",
+            afterbuy_universal_timestamp="01.04.2015 14:52:35">>
 
 ## Contributing
 
