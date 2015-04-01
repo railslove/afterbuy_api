@@ -3,7 +3,7 @@ module Afterbuy
   end
 
   module Representer
-    class ResultRepresenter < Roar::Decorator
+    module ResultRepresenter
       include Roar::XML
 
       self.representation_wrap = :Result

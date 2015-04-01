@@ -78,8 +78,9 @@ describe Afterbuy::API do
     end
 
     describe '#request_params' do
-      specify do
-        expect(subject.send(:request_params, 'DoSomething')).to eql %q|<Request>
+      context 'without a payload' do
+        specify do
+          expect(subject.send(:request_params, 'DoSomething')).to eql %q|<Request>
   <AfterbuyGlobal>
     <PartnerID>valid_partner_id</PartnerID>
     <PartnerPassword>valid_partner_password</PartnerPassword>
@@ -90,6 +91,36 @@ describe Afterbuy::API do
     <ErrorLanguage>EN</ErrorLanguage>
   </AfterbuyGlobal>
 </Request>|
+        end
+      end
+
+      context 'with extra global_params and payload' do
+        specify do
+          payload = { products: [] }
+          payload[:products] << Afterbuy::Product.new({
+            product_ident: OpenStruct.new(product_id: 123),
+            name: "a product"
+          })
+          expect(subject.send(:request_params, 'UpdateShopProducts', { error_language: 'DE'}, payload)).to eql %q|<Request>
+  <AfterbuyGlobal>
+    <PartnerID>valid_partner_id</PartnerID>
+    <PartnerPassword>valid_partner_password</PartnerPassword>
+    <UserID>valid_user_id</UserID>
+    <UserPassword>valid_user_password</UserPassword>
+    <CallName>UpdateShopProducts</CallName>
+    <DetailLevel>0</DetailLevel>
+    <ErrorLanguage>EN</ErrorLanguage>
+  </AfterbuyGlobal>
+  <Products>
+    <Product>
+      <ProductIdent>
+        <ProductID>123</ProductID>
+      </ProductIdent>
+      <Name>a product</Name>
+    </Product>
+  </Products>
+</Request>|
+        end
       end
     end
   end
