@@ -7,8 +7,9 @@ module Afterbuy
       property :result, as: :Result, class: Result do
         include ResultRepresenter
 
-        collection :new_products, as: :Product, wrap: :NewProducts, extend: ProductRepresenter, class: Product
-        property :new_product, as: :NewProduct, extend: ProductRepresenter, class: Product
+        property   :parts_found,  as: :PartsFound
+        property   :skus_found,   as: :SkusFound
+        collection :new_products, as: :NewProduct, wrap: :NewProducts, extend: ProductRepresenter, class: Product
       end
     end
   end

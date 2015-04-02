@@ -8,6 +8,7 @@ module Afterbuy
 
       self.representation_wrap = :Product
 
+      # properties sent with UpdateShopProducts Request
       property :product_ident, as: :ProductIdent do
         self.representation_wrap = :ProductIdent
 
@@ -19,6 +20,14 @@ module Afterbuy
         property :ean,               as: :EAN
       end
 
+      # properties returned with UpdateShopProducts Response
+      property :product_id,                             as: :ProductID
+      property :product_id_requested,                   as: :ProductIDRequested
+      property :anr_requested,                          as: :AnrRequested
+      property :ean_requested,                          as: :EANRequested
+      property :user_product_id,                        as: :UserProductID
+
+      # other properties
       property :anr,                                    as: :Anr
       property :ean,                                    as: :EAN
       property :footer_id,                              as: :FooterID
