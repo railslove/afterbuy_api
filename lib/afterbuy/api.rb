@@ -11,6 +11,8 @@ module Afterbuy
       'UpdateShopProducts' => 'UpdateShopProducts'
     }
 
+    attr_accessor :debug_info
+
     def initialize(partner_id: nil, partner_password: nil, user_id: nil, user_password: nil)
       raise ConfigMissingPartnerIDError, 'You must provide an Afterbuy partner_id'             unless Afterbuy.config.partner_id || partner_id
       raise ConfigMissingPartnerPasswordError, 'You must provide an Afterbuy partner_password' unless Afterbuy.config.partner_password || partner_password
@@ -25,9 +27,11 @@ module Afterbuy
     end
 
     def call(method_name, global_params: {}, payload: {})
+      self.debug_info = { request_params: request_params(method_name, global_params, payload) }
       response = connection.post do |req|
         req.body = request_params(method_name, global_params, payload)
       end
+      self.debug_info[:response_body] = response.body
       "Afterbuy::Representer::#{METHOD_RESPONSE_MAPPING[method_name]}ResponseRepresenter".constantize.new("Afterbuy::#{METHOD_RESPONSE_MAPPING[method_name]}Response".constantize.new).from_xml(response.body)
     end
 
