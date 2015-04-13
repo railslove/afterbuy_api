@@ -11,6 +11,7 @@ module Afterbuy
       property :nr, as: :Nr
       property :url, as: :Url
       property :alt_text, as: :AltText
+      property :type, as: :Typ # used only in the children collection
       collection :children, as: :ProductPicture, wrap: :Childs, extend: ProductPictureRepresenter, class: ProductPicture
     end
   end
