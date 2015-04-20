@@ -3,7 +3,7 @@ module Afterbuy
   end
 
   module Representer
-    class CatalogRepresenter < Roar::Decorator
+    module CatalogRepresenter
       include Roar::XML
 
       self.representation_wrap = :Catalog

@@ -86,15 +86,48 @@ module Afterbuy
       property :condition,                              as: :Condition
       property :age_group,                              as: :AgeGroup
       property :gender,                                 as: :Gender
-      collection :skus, as: :Sku, wrap: :Skus do
+
+      # Using a property here instead of a collection because collections don't allow
+      # adding a property at the beginning of the collection as shown below
+      #
+      # <AddCatalogs>
+      #   <UpdateAction>1</UpdateAction>  <======= (this is the intruder here)
+      #   <AddCatalog>
+      #     <CatalogID>1</CatalogID>
+      #     <CatalogName>First Category</CatalogName>
+      #   </AddCatalog>
+      #   <AddCatalog>
+      #     <CatalogID>2</CatalogID>
+      #     <CatalogName>Second Category</CatalogName>
+      #   </AddCatalog>
+      # </AddCatalogs>
+      property :add_catalogs do
+        self.representation_wrap = :AddCatalogs
         property :update_action, as: :UpdateAction
+        collection :add_catalogs do
+          include CatalogRepresenter
+          self.representation_wrap = :AddCatalog
+        end
       end
-      collection :add_catalogs, as: :AddCatalog, wrap: :AddCatalogs, extend: CatalogRepresenter, class: Catalog do
+
+      property :skus do
+        self.representation_wrap = :Skus
         property :update_action, as: :UpdateAction
+        collection :skus do
+          self.representation_wrap = :Sku
+          property :sku_number, content: true
+        end
       end
-      collection :add_attributes, as: :AddAttribut, wrap: :AddAttributes, extend: AttributeRepresenter, class: Attribute do
+
+      property :add_attributes do
+        self.representation_wrap = :AddAttributes
         property :update_action, as: :UpdateAction
+        collection :add_catalogs do
+          include AttributeRepresenter
+          self.representation_wrap = :AddAttribut
+        end
       end
+
       collection :product_pictures, as: :ProductPicture, wrap: :ProductPictures, extend: ProductPictureRepresenter, class: ProductPicture
     end
   end

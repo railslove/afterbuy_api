@@ -3,7 +3,7 @@ module Afterbuy
   end
 
   module Representer
-    class AttributeRepresenter < Roar::Decorator
+    module AttributeRepresenter
       include Roar::XML
 
       self.representation_wrap = :Attribut # german ftw
