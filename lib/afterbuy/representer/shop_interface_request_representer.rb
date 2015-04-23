@@ -81,6 +81,8 @@ module Afterbuy
       def to_hash
         super.tap do |hash|
           if hash.has_key? 'line_items'
+            hash['PosAnz'] = hash['line_items'].count
+
             hash.delete('line_items').each.with_index do |line_item, index|
               line_item.map do |k, v|
                 hash["#{k}_#{index+1}"] = v

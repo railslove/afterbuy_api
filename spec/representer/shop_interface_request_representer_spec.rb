@@ -18,6 +18,7 @@ describe Afterbuy::Representer::ShopInterfaceRequestRepresenter do
       expect(request.to_hash).to eq({
         'Action'        => 'new',
         'PartnerID'     => 123,
+        'PosAnz'        => 2,
         'Artikelnr_1'   => 1,
         'Artikelname_1' => 'Product 1',
         'Artikelnr_2'   => 2,
