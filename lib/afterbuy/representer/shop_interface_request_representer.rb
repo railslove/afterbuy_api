@@ -37,17 +37,6 @@ module Afterbuy
       property :kl_land,                 as: :KLLand
       property :kl_telefon,              as: :KLTelefon
       property :haendler,                as: :Haendler
-      property :artikel_nr_1,            as: :Artikelnr_1
-      property :altern_artikel_nr1_1,    as: :AlternArtikelNr1_1
-      property :altern_artikel_nr2_1,    as: :AlternArtikelNr2_1
-      property :artikel_name_1,          as: :Artikelname_1
-      property :artikel_e_preis_1,       as: :ArtikelEpreis_1
-      property :artikel_mwst_1,          as: :ArtikelMwSt_1
-      property :artikel_menge_1,         as: :ArtikelMenge_1
-      property :artikel_gewicht_1,       as: :ArtikelGewicht_1
-      property :artikel_link_1,          as: :ArtikelLink_1
-      property :attribute_1,             as: :Attribute_1
-      property :artikel_stamm_id_1,      as: :ArtikelStammID_1
       property :kommentar,               as: :Kommentar
       property :use_compl_weight,        as: :UseComplWeight
       property :buy_date,                as: :BuyDate
@@ -86,6 +75,19 @@ module Afterbuy
       property :reference,               as: :reference
       property :payment_status,          as: :PaymentStatus
       property :payment_transaction_id,  as: :PaymentTransactionId
+
+      collection :line_items, extend: ShopInterfaceLineItemRepresenter, class: ShopInterfaceLineItem
+
+      def to_hash
+        super.tap do |hash|
+          hash.delete('line_items').each.with_index do |line_item, index|
+            line_item.map do |k, v|
+              hash["#{k}_#{index+1}"] = v
+            end
+          end
+        end
+      end
+
     end
   end
 end

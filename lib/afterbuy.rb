@@ -25,6 +25,7 @@ require 'afterbuy/representer/attribute_representer'
 require 'afterbuy/representer/product_representer'
 require 'afterbuy/representer/update_shop_products_request_representer'
 require 'afterbuy/representer/update_shop_products_response_representer'
+require 'afterbuy/representer/shop_interface_line_item_representer'
 require 'afterbuy/representer/shop_interface_request_representer'
 require 'afterbuy/representer/shop_interface_response_representer'
 
