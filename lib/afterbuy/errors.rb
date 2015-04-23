@@ -1,18 +1,18 @@
 module Afterbuy
 
-  class ABError < StandardError
+  class ConfigError < StandardError
   end
 
-  class ConfigMissingPartnerIDError < ABError
+  class ConfigMissingPartnerIDError < ConfigError
   end
 
-  class ConfigMissingPartnerPasswordError < ABError
+  class ConfigMissingPartnerPasswordError < ConfigError
   end
 
-  class ConfigMissingUserIDError < ABError
+  class ConfigMissingUserIDError < ConfigError
   end
 
-  class ConfigMissingUserPasswordError < ABError
+  class ConfigMissingUserPasswordError < ConfigError
   end
 
 end
