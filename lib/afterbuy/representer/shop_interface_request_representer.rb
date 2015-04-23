@@ -80,9 +80,11 @@ module Afterbuy
 
       def to_hash
         super.tap do |hash|
-          hash.delete('line_items').each.with_index do |line_item, index|
-            line_item.map do |k, v|
-              hash["#{k}_#{index+1}"] = v
+          if hash.has_key? 'line_items'
+            hash.delete('line_items').each.with_index do |line_item, index|
+              line_item.map do |k, v|
+                hash["#{k}_#{index+1}"] = v
+              end
             end
           end
         end
