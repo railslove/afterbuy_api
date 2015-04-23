@@ -77,6 +77,24 @@ describe Afterbuy::API do
       end
     end
 
+    describe '#shop_interface_call', :vcr do
+      context 'invalid parameters' do
+        specify 'fails with error' do
+          response = subject.shop_interface_call(payload: { action: 'new' })
+          expect(response.success).to eql '0'
+          expect(response.errors).to_not be_empty
+        end
+      end
+
+      context 'action CheckUserId' do
+        specify 'succeeds and returns the user_id' do
+          response = subject.shop_interface_call(payload: { action: 'CheckUserId' })
+          expect(response.success).to eql '1'
+          expect(response.user_id).to eql '123456'
+        end
+      end
+    end
+
     describe '#request_params' do
       context 'without a payload' do
         specify do
