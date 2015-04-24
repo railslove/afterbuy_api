@@ -105,7 +105,7 @@ describe Afterbuy::API do
             k_strasse: 'Clientstr. 4',
             k_plz: '12345',
             k_ort: 'Carlhausen',
-            k_land: 'DE',
+            k_land: 'D',
             line_items: [
               Afterbuy::ShopInterfaceLineItem.new(
                 artikel_nr: 1,
