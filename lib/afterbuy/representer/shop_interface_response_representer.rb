@@ -18,11 +18,15 @@ module Afterbuy
       end
 
       nested :data do
-        property :aid,        as: :AID
-        property :uid,        as: :UID
-        property :kunde_nr,   as: :KundeNr
-        property :e_kunde_nr, as: :EKundeNr
-        property :user_id,    as: :UserID
+        # data receive when action is CheckUserId
+        property :user_id,     as: :UserID
+
+        # data receive when action is new
+        property :aid,         as: :AID
+        property :uid,         as: :UID
+        property :kunden_nr,   as: :KundenNr
+        property :e_kunden_nr, as: :EKundenNr
+        property :coupon_used, as: :CouponUsed
       end
     end
   end

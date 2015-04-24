@@ -86,11 +86,49 @@ describe Afterbuy::API do
         end
       end
 
-      context 'action CheckUserId' do
+      context 'valid parameters with action CheckUserId' do
         specify 'succeeds and returns the user_id' do
           response = subject.shop_interface_call(payload: { action: 'CheckUserId' })
           expect(response.success).to eql '1'
           expect(response.user_id).to eql '123456'
+        end
+      end
+
+      context 'valid parameters with action new' do
+        specify 'succeeds' do
+          response = subject.shop_interface_call(payload: {
+            action: 'new',
+            k_benutzername: 'carl_client',
+            k_email: 'client@mail.de',
+            k_vorname: 'Carl',
+            k_nachname: 'Client',
+            k_strasse: 'Clientstr. 4',
+            k_plz: '12345',
+            k_ort: 'Carlhausen',
+            k_land: 'DE',
+            line_items: [
+              Afterbuy::ShopInterfaceLineItem.new(
+                artikel_nr: 1,
+                artikel_name: 'Product 1',
+                artikel_mwst: 19,
+                artikel_menge: 1,
+                artikel_e_preis: '9,99'
+              ),
+              Afterbuy::ShopInterfaceLineItem.new(
+                artikel_nr: 2,
+                artikel_name: 'Product 2',
+                artikel_mwst: 19,
+                artikel_menge: 2,
+                artikel_e_preis: '6,99'
+              )
+            ]
+          })
+          expect(response.success).to eql '1'
+          expect(response.aid).to_not be_nil
+          expect(response.uid).to_not be_nil
+          expect(response.kunden_nr).to_not be_nil
+          expect(response.e_kunden_nr).to_not be_nil
+          expect(response.coupon_used).to_not be_nil
         end
       end
     end
