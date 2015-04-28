@@ -39,11 +39,11 @@ module Afterbuy
       "Afterbuy::Representer::#{METHOD_RESPONSE_MAPPING[method_name]}ResponseRepresenter".constantize.new("Afterbuy::#{METHOD_RESPONSE_MAPPING[method_name]}Response".constantize.new).from_xml(response.body)
     end
 
-    def shop_interface_call(global_params: {}, payload: {})
-      self.debug_info = { request_params: shop_interface_request_params(global_params, payload) }
+    def shop_interface_call(global_params: {}, request: Afterbuy::ShopInterfaceRequest.new)
+      self.debug_info = { request_params: shop_interface_request_params(global_params, request) }
 
       response = shop_interface_connection.get do |req|
-        req.params = shop_interface_request_params(global_params, payload).to_hash
+        req.params = shop_interface_request_params(global_params, request).to_hash
       end
 
       self.debug_info[:response_body] = response.body
@@ -88,16 +88,12 @@ module Afterbuy
         ).to_xml
       end
 
-      def shop_interface_request_params(global_params={}, payload={})
-        request_params = payload.merge({
-          partner_id: global_params[:partner_id] || @partner_id,
-          partner_pass: global_params[:partner_pass] || @partner_password,
-          user_id: global_params[:user_id] || @user_id,
-        })
+      def shop_interface_request_params(global_params={}, request=Afterbuy::ShopInterfaceRequest.new)
+        request.partner_id = global_params[:partner_id] || @partner_id
+        request.partner_pass = global_params[:partner_pass] || @partner_password
+        request.user_id = global_params[:user_id] || @user_id
 
-        Afterbuy::Representer::ShopInterfaceRequestRepresenter.new(
-          Afterbuy::ShopInterfaceRequest.new(request_params)
-        )
+        Afterbuy::Representer::ShopInterfaceRequestRepresenter.new request
       end
 
   end

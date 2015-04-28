@@ -80,7 +80,7 @@ describe Afterbuy::API do
     describe '#shop_interface_call', :vcr do
       context 'invalid parameters' do
         specify 'fails with error' do
-          response = subject.shop_interface_call(payload: { action: 'new' })
+          response = subject.shop_interface_call(request: Afterbuy::ShopInterfaceRequest.new(action: 'new'))
           expect(response.success).to eql '0'
           expect(response.errors).to_not be_empty
         end
@@ -88,7 +88,7 @@ describe Afterbuy::API do
 
       context 'valid parameters with action CheckUserId' do
         specify 'succeeds and returns the user_id' do
-          response = subject.shop_interface_call(payload: { action: 'CheckUserId' })
+          response = subject.shop_interface_call(request: Afterbuy::ShopInterfaceRequest.new(action: 'CheckUserId'))
           expect(response.success).to eql '1'
           expect(response.user_id).to eql '123456'
         end
@@ -96,7 +96,7 @@ describe Afterbuy::API do
 
       context 'valid parameters with action new' do
         specify 'succeeds' do
-          response = subject.shop_interface_call(payload: {
+          request = Afterbuy::ShopInterfaceRequest.new({
             action: 'new',
             k_benutzername: 'carl_client',
             k_email: 'client@mail.de',
@@ -123,6 +123,7 @@ describe Afterbuy::API do
               )
             ]
           })
+          response = subject.shop_interface_call(request: request)
           expect(response.success).to eql '1'
           expect(response.aid).to_not be_nil
           expect(response.uid).to_not be_nil
