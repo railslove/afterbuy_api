@@ -1,14 +1,16 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.afterbuy.de/afterbuy/ShopInterfaceUTF8.aspx?Action=new&PartnerID=valid_partner_id&PartnerPass=valid_partner_password&UserID=valid_user_id
+    method: post
+    uri: https://api.afterbuy.de/afterbuy/ShopInterfaceUTF8.aspx
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: Action=new&PartnerID=valid_partner_id&PartnerPass=valid_partner_password&UserID=valid_user_id
     headers:
       User-Agent:
       - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,7 +29,7 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Thu, 23 Apr 2015 16:34:38 GMT
+      - Tue, 05 May 2015 17:39:28 GMT
       Content-Length:
       - '240'
     body:
@@ -36,5 +38,5 @@ http_interactions:
         \ <errorlist>\r\n<error>UserId nicht vorhanden oder nicht freigegeben.</error>\r\n
         \ </errorlist>\r\n</result>\r\n"
     http_version: 
-  recorded_at: Thu, 23 Apr 2015 16:34:39 GMT
+  recorded_at: Tue, 05 May 2015 17:39:28 GMT
 recorded_with: VCR 2.9.3

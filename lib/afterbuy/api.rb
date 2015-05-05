@@ -42,8 +42,8 @@ module Afterbuy
     def shop_interface_call(global_params: {}, request: Afterbuy::ShopInterfaceRequest.new)
       self.debug_info = { request_params: shop_interface_request_params(global_params, request).to_hash }
 
-      response = shop_interface_connection.get do |req|
-        req.params = shop_interface_request_params(global_params, request).to_hash
+      response = shop_interface_connection.post do |req|
+        req.body = shop_interface_request_params(global_params, request).to_hash
       end
 
       self.debug_info[:response_body] = response.body
@@ -61,6 +61,7 @@ module Afterbuy
 
     def shop_interface_connection
       @shop_interface_connection ||= Faraday.new(url: @shop_interface_url) do |faraday|
+        faraday.request  :url_encoded
         faraday.adapter Faraday.default_adapter
         faraday.use Afterbuy::Middleware::ErrorDetector
       end

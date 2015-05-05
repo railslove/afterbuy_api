@@ -1,14 +1,16 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.afterbuy.de/afterbuy/ShopInterfaceUTF8.aspx?Action=new&ArtikelEpreis_1=9,99&ArtikelEpreis_2=6,99&ArtikelMenge_1=1&ArtikelMenge_2=2&ArtikelMwSt_1=19&ArtikelMwSt_2=19&Artikelname_1=Product%201&Artikelname_2=Product%202&Artikelnr_1=1&Artikelnr_2=2&KLand=D&KNachname=Client&KOrt=Carlhausen&KPLZ=12345&KStrasse=Clientstr.%204&KVorname=Carl&Kbenutzername=carl_client&Kemail=client@mail.de&PartnerID=valid_partner_id&PartnerPass=valid_partner_password&PosAnz=2&UserID=valid_user_id
+    method: post
+    uri: https://api.afterbuy.de/afterbuy/ShopInterfaceUTF8.aspx
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: Action=new&ArtikelEpreis_1=9%2C99&ArtikelEpreis_2=6%2C99&ArtikelMenge_1=1&ArtikelMenge_2=2&ArtikelMwSt_1=19&ArtikelMwSt_2=19&Artikelname_1=Product+1&Artikelname_2=Product+2&Artikelnr_1=1&Artikelnr_2=2&KLand=D&KNachname=Client&KOrt=Carlhausen&KPLZ=12345&KStrasse=Clientstr.+4&KVorname=Carl&Kbenutzername=carl_client&Kemail=client%40mail.de&PartnerID=valid_partner_id&PartnerPass=valid_partner_password&PosAnz=2&UserID=valid_user_id
     headers:
       User-Agent:
       - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,9 +29,9 @@ http_interactions:
       X-Powered-By:
       - ASP.NET
       Date:
-      - Fri, 24 Apr 2015 10:42:16 GMT
+      - Tue, 05 May 2015 17:39:30 GMT
       Content-Length:
-      - '328'
+      - '240'
     body:
       encoding: UTF-8
       string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<result>\r\n  <success>1</success>\r\n
@@ -37,5 +39,5 @@ http_interactions:
         \   <KundenNr>123456789</KundenNr>\r\n    <EKundenNr>12345</EKundenNr>\r\n
         \   <CouponUsed>0</CouponUsed>\r\n  </data>\r\n</result>\r\n"
     http_version:
-  recorded_at: Fri, 24 Apr 2015 10:42:15 GMT
+  recorded_at: Tue, 05 May 2015 17:39:30 GMT
 recorded_with: VCR 2.9.3
