@@ -40,7 +40,7 @@ module Afterbuy
     end
 
     def shop_interface_call(global_params: {}, request: Afterbuy::ShopInterfaceRequest.new)
-      self.debug_info = { request_params: shop_interface_request_params(global_params, request) }
+      self.debug_info = { request_params: shop_interface_request_params(global_params, request).to_hash }
 
       response = shop_interface_connection.get do |req|
         req.params = shop_interface_request_params(global_params, request).to_hash
