@@ -1,5 +1,8 @@
 module Afterbuy
 
+  class APIError < StandardError
+  end
+
   class ConfigError < StandardError
   end
 

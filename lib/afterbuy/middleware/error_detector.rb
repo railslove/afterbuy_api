@@ -5,7 +5,7 @@ module Afterbuy
       def call(env)
         @app.call(env).on_complete do |env|
           unless (200..299).include? env[:status]
-            raise ABError, env[:body]
+            raise APIError, env[:body]
           end
         end
       end
