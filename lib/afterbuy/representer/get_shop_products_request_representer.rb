@@ -4,7 +4,7 @@ module Afterbuy
 
   module Representer
     class GetShopProductsRequestRepresenter < RequestRepresenter
-      collection :products, as: :Product, wrap: :Products, extend: ProductRepresenter, class: Product
+      property :data_filter, as: :DataFilter
     end
   end
 end
