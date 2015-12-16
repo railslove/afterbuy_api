@@ -3,12 +3,14 @@ module Afterbuy
 
     METHOD_REQUEST_MAPPING = {
       'GetAfterbuyTime' => '',
-      'UpdateShopProducts' => 'UpdateShopProducts'
+      'UpdateShopProducts' => 'UpdateShopProducts',
+      'GetShopProducts' => 'GetShopProducts'
     }
 
     METHOD_RESPONSE_MAPPING = {
       'GetAfterbuyTime' => 'Time',
-      'UpdateShopProducts' => 'UpdateShopProducts'
+      'UpdateShopProducts' => 'UpdateShopProducts',
+      'GetShopProducts' => 'GetShopProducts'
     }
 
     attr_accessor :debug_info
