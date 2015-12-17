@@ -10,6 +10,9 @@ require 'afterbuy/errors'
 
 require 'afterbuy/middleware/error_detector'
 
+require 'afterbuy/test_representer'
+
+require 'afterbuy/representer/data_filter_representer'
 require 'afterbuy/representer/global_representer'
 require 'afterbuy/representer/request_representer'
 

@@ -1,5 +1,5 @@
 module Afterbuy
-  class DataFilter < OpenStruct
+  class Global < OpenStruct
   end
 
   module Representer
