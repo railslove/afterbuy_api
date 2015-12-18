@@ -7,7 +7,10 @@ module Afterbuy
     class DataFilterRepresenter < Roar::Decorator
       include Roar::XML
 
-      self.representation_wrap = :DataFilter
+      property :add_data_filter do
+        self.representation_wrap = :DataFilter
+        # include FilterRepresenter
+      end
 
     end
   end
