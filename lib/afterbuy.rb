@@ -10,6 +10,7 @@ require 'afterbuy/errors'
 
 require 'afterbuy/middleware/error_detector'
 
+require 'afterbuy/representer/data_filter_representer'
 require 'afterbuy/representer/global_representer'
 require 'afterbuy/representer/request_representer'
 
@@ -23,6 +24,9 @@ require 'afterbuy/representer/catalog_representer'
 require 'afterbuy/representer/product_picture_representer'
 require 'afterbuy/representer/attribute_representer'
 require 'afterbuy/representer/product_representer'
+require 'afterbuy/representer/get_shop_products_request_representer'
+require 'afterbuy/representer/get_shop_products_response_representer'
+require 'afterbuy/representer/filter_representer'
 require 'afterbuy/representer/update_shop_products_request_representer'
 require 'afterbuy/representer/update_shop_products_response_representer'
 require 'afterbuy/representer/shop_interface_line_item_representer'
