@@ -8,7 +8,6 @@ module Afterbuy
       include Roar::XML
 
       self.representation_wrap = :DataFilter
-
     end
   end
 end
