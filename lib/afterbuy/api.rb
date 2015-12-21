@@ -36,7 +36,6 @@ module Afterbuy
         req.body = request_params(method_name, global_params, payload)
       end
 
-      binding.pry
       self.debug_info[:response_body] = response.body
 
       "Afterbuy::Representer::#{METHOD_RESPONSE_MAPPING[method_name]}ResponseRepresenter".constantize.new("Afterbuy::#{METHOD_RESPONSE_MAPPING[method_name]}Response".constantize.new).from_xml(response.body)

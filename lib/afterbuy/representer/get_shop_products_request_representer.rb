@@ -6,7 +6,7 @@ module Afterbuy
         xml_s << "<Filter>"
         xml_s << "  <FilterName>#{self.filter_name}</FilterName>"
         xml_s << "  <FilterValues>"
-        xml_s << "    <FilterValue>#{self.filter_value}</FilterValue>"
+        xml_s << "    <FilterValue>#{self.filter_value.join(";")}</FilterValue>"
         xml_s << "  </FilterValues>"
         xml_s << "</Filter>"
 
