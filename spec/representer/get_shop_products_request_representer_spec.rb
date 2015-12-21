@@ -8,8 +8,6 @@ describe Afterbuy::Representer::GetShopProductsRequestRepresenter do
         Afterbuy::GetShopProductsRequest.new(filter_name: "ProductID", filter_value: 12345)
       )
 
-      binding.pry
-
       expect(request.to_xml).to eq(
       "<Request>
   <DataFilter>&lt;Filter&gt;
