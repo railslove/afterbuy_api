@@ -179,6 +179,30 @@ describe Afterbuy::API do
 </Request>|
         end
       end
+
+      context 'raw XML is unescaped' do
+        specify do
+          payload = { filter_name: "ProductID", filter_value: 1234 }
+          expect(subject.send(:request_params, 'GetShopProducts', { error_language: 'DE'}, payload)).to eql %q|<Request>
+  <AfterbuyGlobal>
+    <PartnerID>valid_partner_id</PartnerID>
+    <PartnerPassword>valid_partner_password</PartnerPassword>
+    <UserID>valid_user_id</UserID>
+    <UserPassword>valid_user_password</UserPassword>
+    <CallName>GetShopProducts</CallName>
+    <DetailLevel>0</DetailLevel>
+    <ErrorLanguage>EN</ErrorLanguage>
+  </AfterbuyGlobal>
+  <DataFilter><Filter>
+  <FilterName>ProductID</FilterName>
+  <FilterValues>
+    <FilterValue>1234</FilterValue>
+  </FilterValues>
+</Filter></DataFilter>
+</Request>|
+        end
+      end
+
     end
   end
 end
