@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '~> 4.2'
   spec.add_dependency 'faraday'
   spec.add_dependency 'roar'
+  spec.add_dependency 'nokogiri'
 
   spec.add_development_dependency 'bundler', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 10.0'
