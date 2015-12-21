@@ -1,16 +1,24 @@
 module Afterbuy
-  class GetShopProductsRequest < OpenStruct
-  end
+    class GetShopProductsRequest < OpenStruct
+
+      def data_filter
+        xml_s = []
+        xml_s << "<Filter>"
+        xml_s << "  <FilterName>#{self.filter_name}</FilterName>"
+        xml_s << "  <FilterValues>"
+        xml_s << "    <FilterValue>#{self.filter_value}</FilterValue>"
+        xml_s << "  </FilterValues>"
+        xml_s << "</Filter>"
+
+        xml_s.join("\n")
+      end
+
+    end
 
   module Representer
     class GetShopProductsRequestRepresenter < RequestRepresenter
 
-      nested :data_filter, as: :DataFilter do
-        nested :filter, as: :Filter do
-          property :filter_name, as: :FilterName, getter: lambda {|*| "ProductID" }
-          property :filter_value, as: :FilterValue, wrap: :FilterValues, getter: lambda {|*| self[:afterbuy_product_ids].join(";") }
-        end
-      end
+      property :data_filter, as: :DataFilter
 
     end
   end

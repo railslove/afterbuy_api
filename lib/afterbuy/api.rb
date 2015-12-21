@@ -36,6 +36,7 @@ module Afterbuy
         req.body = request_params(method_name, global_params, payload)
       end
 
+      binding.pry
       self.debug_info[:response_body] = response.body
 
       "Afterbuy::Representer::#{METHOD_RESPONSE_MAPPING[method_name]}ResponseRepresenter".constantize.new("Afterbuy::#{METHOD_RESPONSE_MAPPING[method_name]}Response".constantize.new).from_xml(response.body)
@@ -85,9 +86,10 @@ module Afterbuy
             })
           )
         })
-        "Afterbuy::Representer::#{METHOD_REQUEST_MAPPING[method_name]}RequestRepresenter".constantize.new(
-          "Afterbuy::#{METHOD_REQUEST_MAPPING[method_name]}Request".constantize.new(request_params)
-        ).to_xml
+
+        method_request      = "Afterbuy::#{METHOD_REQUEST_MAPPING[method_name]}Request".constantize.new(request_params)
+        request_representer = "Afterbuy::Representer::#{METHOD_REQUEST_MAPPING[method_name]}RequestRepresenter".constantize.new(method_request)
+        return CGI.unescape_html(request_representer.to_xml)
       end
 
       def shop_interface_request_params(global_params={}, request=Afterbuy::ShopInterfaceRequest.new)
